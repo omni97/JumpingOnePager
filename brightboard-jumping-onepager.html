@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrightBoard Jumping Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: #2d2926;
+            line-height: 1.6;
+            background: #ffffff;
+        }
+
+        /* BrightBoard Colors */
+        :root {
+            --bb-orange: #ed8b00;
+            --bb-black: #2d2926;
+            --bb-white: #ffffff;
+            --text-muted: #888888;
+            --border-light: #e5e5e5;
+        }
+
+        /* Header / Hero */
+        header {
+            background: linear-gradient(135deg, var(--bb-black) 0%, #1a1815 100%);
+            color: var(--bb-white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 8px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: var(--bb-orange);
+            color: var(--bb-white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 16px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 20px;
+        }
+
+        section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--bb-black);
+            font-weight: 400;
+        }
+
+        section.light-bg {
+            background: #f8f8f8;
+        }
+
+        /* Product Carousel */
+        .carousel-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .carousel {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+        }
+
+        .carousel::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .carousel::-webkit-scrollbar-track {
+            background: #f0f0f0;
+        }
+
+        .carousel::-webkit-scrollbar-thumb {
+            background: var(--bb-orange);
+            border-radius: 3px;
+        }
+
+        .carousel-item {
+            flex: 0 0 calc(50% - 10px);
+            min-width: 350px;
+            background: var(--bb-white);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 32px;
+            scroll-snap-align: start;
+            transition: all 0.3s ease;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.94);
+            z-index: 1;
+        }
+
+        .carousel-item > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .carousel-item:hover {
+            border-color: var(--bb-orange);
+            box-shadow: 0 8px 24px rgba(237, 139, 0, 0.12);
+        }
+
+        .product-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .carousel-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--bb-black);
+            font-weight: 500;
+        }
+
+        .carousel-item p {
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .carousel-item ul {
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .carousel-item ul li {
+            padding-left: 20px;
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .carousel-item ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--bb-orange);
+            font-weight: bold;
+        }
+
+        /* Carousel Controls */
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .carousel-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--bb-orange);
+            background: var(--bb-white);
+            color: var(--bb-orange);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: var(--bb-orange);
+            color: var(--bb-white);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            padding: 32px;
+            background: var(--bb-white);
+            border-left: 4px solid var(--bb-orange);
+            border-radius: 4px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--bb-black);
+            font-weight: 500;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--bb-black);
+            color: var(--bb-white);
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 12px;
+        }
+
+        .cta-section h2 {
+            color: var(--bb-white);
+            margin-bottom: 24px;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Form Styling */
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--bb-black);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--bb-white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--bb-orange);
+            box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: var(--bb-orange);
+            color: var(--bb-white);
+            padding: 14px 32px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #d67a00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(237, 139, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bb-black);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        .footer-links {
+            margin-top: 16px;
+        }
+
+        .footer-links a {
+            color: var(--bb-orange);
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 50px 20px;
+            }
+
+            section h2 {
+                font-size: 1.6rem;
+            }
+
+            .carousel-item {
+                flex: 0 0 calc(100% - 0px);
+                min-width: 280px;
+                padding: 24px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .cta-section {
+                padding: 40px 20px;
+            }
+
+            .cta-section h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Header -->
+    <header>
+        <div class="container">
+            <div style="margin-bottom: 32px;">
+                <img src="BB_WIT.png" alt="BrightBoard" style="height: 80px; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));">
+            </div>
+            <h1>LED Solutions voor Paardenjumping Events</h1>
+            <p>Maak je event onvergetelijk met BrightBoard technologie</p>
+            <span class="header-badge">Bijna 20 jaar expertise</span>
+        </div>
+    </header>
+
+    <!-- Product Carousel Section -->
+    <section class="light-bg">
+        <div class="container">
+            <h2>Onze Producten</h2>
+
+            <div class="carousel-container">
+                <div class="carousel" id="carousel">
+                    <!-- LED Boarding -->
+                    <div class="carousel-item" style="background-image: url('WhatsApp_Image_2025-08-13_at_13_17_30.jpeg');">
+                        <h3>LED Boarding</h3>
+                        <p>Professionele elektronische scoreborden voor live resultaten en staande gegevens.</p>
+                        <ul>
+                            <li>Real-time score-updates</li>
+                            <li>Aanpasbare lay-out</li>
+                            <li>Weerbestendige behuizing</li>
+                            <li>Naadloze integratie</li>
+                        </ul>
+                    </div>
+
+                    <!-- LED Arch -->
+                    <div class="carousel-item" style="background-image: url('LED_arch.JPG');">
+                        <h3>LED Arch</h3>
+                        <p>Spectaculaire LED-bogen voor het ingang en decoratieve doeleinden.</p>
+                        <ul>
+                            <li>Indrukwekkende visuele impact</li>
+                            <li>Modulair ontwerp</li>
+                            <li>Volledig programmeerbaar</li>
+                            <li>Professioneel uiterlijk</li>
+                        </ul>
+                    </div>
+
+                    <!-- LED Video Walls -->
+                    <div class="carousel-item" style="background-image: url('WhatsApp_Image_2025-07-21_at_10_18_27.jpeg');">
+                        <h3>LED Video Walls</h3>
+                        <p>Grote LED-schermen voor video content, advertenties en live streaming.</p>
+                        <ul>
+                            <li>Hoge resolutie beelden</li>
+                            <li>Perfecte kleurweergave</li>
+                            <li>Flexibele configuratie</li>
+                            <li>VIP-sponsor promootie</li>
+                        </ul>
+                    </div>
+
+                    <!-- LED Palen Schermen -->
+                    <div class="carousel-item" style="background-image: url('0f54c873-b81b-4985-8fc4-fb6e3a94d12b.jpeg');">
+                        <h3>LED Schermen op Lichtpalen</h3>
+                        <p>Geïntegreerde LED-displays op bestaande lichtinfrastructuur.</p>
+                        <ul>
+                            <li>Efficiënte ruimtebenutting</li>
+                            <li>Snel geïnstalleerd</li>
+                            <li>Optimale zichtbaarheid</li>
+                            <li>Kostenbesparend</li>
+                        </ul>
+                    </div>
+
+                    <!-- LED Verlichting -->
+                    <div class="carousel-item" style="background-image: url('WhatsApp_Image_2026-02-12_at_13_02_31__3_.jpeg');">
+                        <h3>LED Verlichting</h3>
+                        <p>Professionele LED-verlichting voor arena's en trainingsgebieden.</p>
+                        <ul>
+                            <li>Energiezuinig</li>
+                            <li>Dimbaar en programmeerbaar</li>
+                            <li>Langleven</li>
+                            <li>Optimale zichtcondities</li>
+                        </ul>
+                    </div>
+
+                    <!-- Software op Maat -->
+                    <div class="carousel-item" style="background-image: url('df770468-f443-4149-9f8c-96088a3ca2f7.png');">
+                        <h3>Aangepaste Software</h3>
+                        <p>Intelligente besturingssoftware speciaal voor paardensport.</p>
+                        <ul>
+                            <li>Automatische springpaardscouting</li>
+                            <li>Real-time data-analyse</li>
+                            <li>Eenvoudig beheer</li>
+                            <li>Mobiele toegang</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-controls">
+                <button class="carousel-btn" onclick="scrollCarousel(-1)">←</button>
+                <button class="carousel-btn" onclick="scrollCarousel(1)">→</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section>
+        <div class="container">
+            <h2>Waarom BrightBoard?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Betrouwbaarheid</h3>
+                    <p>17+ jaren ervaring met professionele sportevenementen. Onze systemen werken onder alle omstandigheden.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Ondersteuning</h3>
+                    <p>Dedicated technische ondersteuning voorafgaand aan en tijdens uw event. We zijn er voor je.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Flexibiliteit</h3>
+                    <p>Aangepaste oplossingen voor je specifieke behoeften. Geen one-size-fits-all benadering.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Innovatie</h3>
+                    <p>Geavanceerde technologie die je event naar het volgende niveau brengt. Altijd vooruitgang.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Kosteneffectief</h3>
+                    <p>Duurzame ROI door verhoogde sponsorinkomsten en verbeterde spectatorervaring.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Kwaliteit</h3>
+                    <p>Alleen premium materialen en componenten. Professionele installatie en configuratie.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA & Contact Section -->
+    <section>
+        <div class="container">
+            <div class="cta-section">
+                <h2>Klaar voor het volgende event?</h2>
+                <p>Laat ons weten wat je nodig hebt en wij zullen een perfect plan samenstellen.</p>
+
+                <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Naam *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mailadres *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="organization">Organisatie / Club *</label>
+                        <input type="text" id="organization" name="organization" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event">Event Details *</label>
+                        <textarea id="event" name="event" placeholder="Beschrijf je event, locatie, aantal bezoekers, gewenste producten..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Telefoonnummer</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <button type="submit" class="submit-btn">Stuur Bericht</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div style="margin-bottom: 24px;">
+            <img src="BB_ZWART.png" alt="BrightBoard" style="height: 50px; object-fit: contain; opacity: 0.8;">
+        </div>
+        <p>&copy; 2026 BrightBoard. Alle rechten voorbehouden.</p>
+        <p>De officiële LED boarding partner van de KBVB/RBFA sinds 2008.</p>
+        <div class="footer-links">
+            <a href="https://brightboard.eu" target="_blank">brightboard.eu</a>
+            <a href="https://brightboard.marketing" target="_blank">brightboard.marketing</a>
+            <a href="mailto:marketing@brightboard.eu">marketing@brightboard.eu</a>
+        </div>
+    </footer>
+
+    <script>
+        const carousel = document.getElementById('carousel');
+
+        function scrollCarousel(direction) {
+            const itemWidth = carousel.querySelector('.carousel-item').offsetWidth + 20;
+            carousel.scrollLeft += direction * (itemWidth + 20);
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                organization: document.getElementById('organization').value,
+                event: document.getElementById('event').value,
+                phone: document.getElementById('phone').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Log the form data (in real world, this would send to a backend)
+            console.log('Form submitted:', formData);
+
+            // Show success message
+            const submitBtn = event.target.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Bericht verzonden! ✓';
+            submitBtn.style.background = '#28a745';
+
+            // Reset form
+            event.target.reset();
+
+            // Restore button after 3 seconds
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = 'var(--bb-orange)';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
