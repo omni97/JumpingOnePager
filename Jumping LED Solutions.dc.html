@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="design_doc_mode" content="page">
+  <meta name="ext-resource-dependency" content="img/prod-boarding.jpg" data-resource-id="prodBoarding">
+  <meta name="ext-resource-dependency" content="img/prod-arch.jpg" data-resource-id="prodArch">
+  <meta name="ext-resource-dependency" content="img/prod-videowall.jpg" data-resource-id="prodVideowall">
+  <meta name="ext-resource-dependency" content="img/prod-lighting.jpg" data-resource-id="prodLighting">
+  <meta name="ext-resource-dependency" content="img/prod-software.jpg" data-resource-id="prodSoftware">
+  <link rel="stylesheet" href="_ds/brightboard-design-system-8b998d39-62dc-421f-8f6c-d42f1f479eb6/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/brightboard-design-system-8b998d39-62dc-421f-8f6c-d42f1f479eb6/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/brightboard-design-system-8b998d39-62dc-421f-8f6c-d42f1f479eb6/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/brightboard-design-system-8b998d39-62dc-421f-8f6c-d42f1f479eb6/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/brightboard-design-system-8b998d39-62dc-421f-8f6c-d42f1f479eb6/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/brightboard-design-system-8b998d39-62dc-421f-8f6c-d42f1f479eb6/tokens/base.css">
+  <link rel="stylesheet" href="_ds/brightboard-design-system-8b998d39-62dc-421f-8f6c-d42f1f479eb6/styles.css">
+  <script src="_ds/brightboard-design-system-8b998d39-62dc-421f-8f6c-d42f1f479eb6/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bb-ink-950); }
+    a { color: var(--bb-orange-500); text-decoration: none; }
+    a:hover { color: var(--bb-orange-300); }
+    .bb-scroller { scrollbar-width: none; }
+    .bb-scroller::-webkit-scrollbar { display: none; }
+    @keyframes bbLive { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+  </style>
+</helmet>
+
+<template id="__bundler_thumbnail" data-bg-color="#0D0B0A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0D0B0A"></rect><circle cx="30" cy="50" r="7" fill="#F28A00"></circle><circle cx="50" cy="50" r="7" fill="#F28A00"></circle><circle cx="70" cy="50" r="7" fill="#F28A00"></circle></svg></template>
+
+<div style="background: var(--bb-ink-950); color: var(--bb-grey-50); font-family: 'Archivo', system-ui, sans-serif; overflow-x: hidden;">
+
+  <header style="position: relative; min-height: 780px; display: grid; align-items: end; padding: 0;">
+    <div style="position: absolute; inset: 0; background-image: url('img/hero.jpg'); background-size: cover; background-position: center 40%;"></div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,11,10,.82) 0%, rgba(13,11,10,.42) 38%, rgba(13,11,10,.94) 100%);"></div>
+    <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(242,138,0,.16) 1.2px, transparent 0); background-size: 22px 22px; mix-blend-mode: screen;"></div>
+
+    <div style="position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 56px; z-index: 3;">
+      <div style="display: flex; flex-direction: column; gap: 7px;">
+        <img src="img/logo-brightboard-light.png" alt="BrightBoard" style="height: 21px; display: block; width: 137px">
+        <div style="font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: .3em; text-transform: uppercase; color: var(--bb-grey-400);">Brightens your brand</div>
+      </div>
+      <nav style="display: flex; align-items: center; gap: 32px; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--bb-grey-400);">
+        <a href="#producten" style="color: var(--bb-grey-400);">Producten</a>
+        <a href="#waarom" style="color: var(--bb-grey-400);">Waarom BrightBoard</a>
+        <a href="#events" style="color: var(--bb-grey-400);">Events</a>
+        <x-import component-from-global-scope="BrightBoardDesignSystem_8b998d.Button" variant="primary" size="sm" onClick="{{ scrollToContact }}" hint-size="150px,36px">Vraag een voorstel</x-import>
+      </nav>
+    </div>
+
+    <div style="position: relative; z-index: 3; padding: 0 56px 72px; max-width: 1400px; width: 100%; margin: 0 auto;">
+      <div style="display: flex; align-items: center; gap: 12px; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--bb-orange-500); margin-bottom: 22px;">
+        <span style="width: 9px; height: 9px; border-radius: 50%; background: var(--bb-orange-500); box-shadow: 0 0 12px 2px rgba(242,138,0,.7); animation: bbLive 2.4s ease-in-out infinite;"></span>
+        LED Solutions · Jumping &amp; Equestrian
+      </div>
+      <h1 style="font-size: clamp(48px, 6.2vw, 92px); line-height: .96; font-weight: 900; letter-spacing: -.03em; margin: 0 0 24px; max-width: 20ch; text-wrap: balance; color: var(--bb-white);">Wij laten jouw <span style="color: var(--bb-orange-500);">jumping</span> stralen.</h1>
+      <p style="font-size: 20px; line-height: 1.5; color: var(--bb-grey-300); max-width: 56ch; margin: 0 0 40px;">Van lokale competitie tot internationale Grand Prix: LED boarding, arches, video walls, arenaverlichting en besturing, geleverd, geïnstalleerd en bediend door één partner.</p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 56px;">
+        <x-import component-from-global-scope="BrightBoardDesignSystem_8b998d.Button" variant="primary" size="lg" onClick="{{ scrollToContact }}" hint-size="220px,48px">Vraag een voorstel</x-import>
+        <x-import component-from-global-scope="BrightBoardDesignSystem_8b998d.Button" variant="outline" size="lg" onClick="{{ scrollToProducts }}" dc-props="{{ ghostBtn }}" hint-size="190px,48px">Bekijk producten</x-import>
+      </div>
+
+      <sc-if value="{{ showHeroStats }}" hint-placeholder-val="{{ true }}">
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 1px; background: var(--bb-ink-800); border: 1px solid var(--bb-ink-800); border-radius: 14px; overflow: hidden; max-width: 900px;">
+          <x-import component-from-global-scope="BrightBoardDesignSystem_8b998d.StatTile" tone="dark" led="{{ true }}" label="Ervaring" value="~20" unit="jaar" hint-size="100%,110px"></x-import>
+          <x-import component-from-global-scope="BrightBoardDesignSystem_8b998d.StatTile" tone="dark" led="{{ true }}" label="Helderheid" value="7500" unit="nits" hint-size="100%,110px"></x-import>
+          <x-import component-from-global-scope="BrightBoardDesignSystem_8b998d.StatTile" tone="dark" led="{{ true }}" label="Refresh" value="7680" unit="Hz" hint-size="100%,110px"></x-import>
+          <x-import component-from-global-scope="BrightBoardDesignSystem_8b998d.StatTile" tone="dark" led="{{ true }}" label="Support" value="24" unit="/7" hint-size="100%,110px"></x-import>
+        </div>
+      </sc-if>
+    </div>
+  </header>
+
+  <section id="producten" style="padding: 104px 0 112px; background: var(--bb-ink-950); border-top: 1px solid var(--bb-ink-800);">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 0 56px; display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-bottom: 44px;">
+      <div>
+        <div style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--bb-orange-500); margin-bottom: 14px;">Onze producten</div>
+        <h2 style="font-size: clamp(34px, 3.6vw, 52px); line-height: 1.02; font-weight: 800; letter-spacing: -.03em; margin: 0; max-width: 24ch; color: var(--bb-white);">Alles voor de piste, uit één hand</h2>
+      </div>
+      <div style="display: flex; gap: 10px; flex: none;">
+        <button onClick="{{ prev }}" style="width: 46px; height: 46px; border-radius: 12px; border: 1px solid var(--bb-ink-700); background: var(--bb-ink-900); color: var(--bb-grey-300); font-size: 18px; cursor: pointer;" style-hover="border-color: var(--bb-orange-500); color: var(--bb-orange-500);">←</button>
+        <button onClick="{{ next }}" style="width: 46px; height: 46px; border-radius: 12px; border: 1px solid var(--bb-ink-700); background: var(--bb-ink-900); color: var(--bb-grey-300); font-size: 18px; cursor: pointer;" style-hover="border-color: var(--bb-orange-500); color: var(--bb-orange-500);">→</button>
+      </div>
+    </div>
+
+    <div ref="{{ scroller }}" class="bb-scroller" style="display: flex; gap: 22px; overflow-x: auto; scroll-behavior: smooth; padding: 6px 56px 10px; scroll-padding-left: 56px;">
+      <sc-for list="{{ products }}" as="p" hint-placeholder-count="4">
+        <article style="flex: 0 0 380px; scroll-snap-align: start; border: 1px solid var(--bb-ink-800); border-radius: 20px; overflow: hidden; background: var(--bb-ink-900); display: flex; flex-direction: column;" style-hover="border-color: var(--bb-orange-700);">
+          <div style="position: relative; height: 214px; background-color: var(--bb-ink-850); overflow: hidden;">
+            <div style="{{ p.mediaStyle }}"></div>
+            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,11,10,.1), rgba(20,17,14,.85));"></div>
+            <div style="position: absolute; left: 16px; bottom: 14px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--bb-orange-400);">{{ p.eyebrow }}</div>
+          </div>
+          <div style="padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 14px; flex: 1;">
+            <h3 style="margin: 0; font-size: 23px; font-weight: 800; letter-spacing: -.02em; color: var(--bb-white);">{{ p.title }}</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--bb-grey-400);">{{ p.body }}</p>
+            <ul style="list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 9px;">
+              <sc-for list="{{ p.items }}" as="it" hint-placeholder-count="4">
+                <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--bb-grey-300);">
+                  <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--bb-orange-500); box-shadow: 0 0 8px rgba(242,138,0,.6); margin-top: 7px; flex: none;"></span>
+                  {{ it }}
+                </li>
+              </sc-for>
+            </ul>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="events" style="position: relative; padding: 0;">
+    <sc-if value="{{ showEvents }}" hint-placeholder-val="{{ true }}">
+    <div style="display: grid; grid-template-columns: 1.1fr 1fr; min-height: 620px;">
+      <div style="position: relative; background-image: url('img/worldclass.jpg'); background-size: cover; background-position: center;">
+        <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13,11,10,.55), rgba(13,11,10,.1));"></div>
+      </div>
+      <div style="background: var(--bb-ink-900); padding: 88px 72px; display: flex; flex-direction: column; justify-content: center; gap: 26px;">
+        <div style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--bb-orange-500);">Wereldklasse evenementen</div>
+        <h2 style="margin: 0; font-size: clamp(32px, 3.2vw, 46px); line-height: 1.05; font-weight: 800; letter-spacing: -.03em; color: var(--bb-white); max-width: 22ch;">Van Parijs tot Madrid, en ook jouw arena</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--bb-grey-400); max-width: 46ch;">BrightBoard is het vertrouwde LED-huis van de meest prestigieuze jumpingcompetities ter wereld. Onze technologie ondersteunt de beste ruiters en springpaarden op weg naar de overwinning.</p>
+        <p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--bb-grey-400); max-width: 46ch;">Dezelfde crew, dezelfde standaard en dezelfde 24/7 opvolging, of het nu om 254 meter boarding of om één LED-boog gaat.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px;">
+          <x-import component-from-global-scope="BrightBoardDesignSystem_8b998d.Badge" variant="brand" hint-size="auto,26px">Longines Global Champions Tour</x-import>
+          <x-import component-from-global-scope="BrightBoardDesignSystem_8b998d.Badge" variant="neutral" hint-size="auto,26px">KBVB / RBFA sinds 2008</x-import>
+          <x-import component-from-global-scope="BrightBoardDesignSystem_8b998d.Badge" variant="neutral" hint-size="auto,26px">UEFA Champions League</x-import>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+  </section>
+
+  <section id="waarom" style="padding: 108px 56px 116px; background: var(--bb-grey-50); color: var(--bb-ink-900);">
+    <div style="max-width: 1400px; margin: 0 auto;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-bottom: 48px;">
+        <div>
+          <div style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--bb-orange-600); margin-bottom: 14px;">Waarom BrightBoard</div>
+          <h2 style="margin: 0; font-size: clamp(34px, 3.6vw, 52px); line-height: 1.02; font-weight: 800; letter-spacing: -.03em; max-width: 22ch;">Zes redenen waarom organisatoren blijven</h2>
+        </div>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6; color: var(--bb-grey-600); max-width: 34ch;">Eén partner voor ontwerp, productie, verhuur, installatie, programmatie en operatie op de dag zelf.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px;">
+        <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="6">
+          <div style="background: var(--bb-white); border: 1px solid var(--bb-grey-200); border-radius: 14px; padding: 30px 28px 32px; display: flex; flex-direction: column; gap: 12px; transition: transform 160ms ease, box-shadow 160ms ease;" style-hover="transform: translateY(-3px); box-shadow: 0 18px 34px -18px rgba(46,42,37,.35);">
+            <div style="font-family: 'DotGothic16', monospace; font-size: 26px; color: var(--bb-orange-500); line-height: 1;">{{ r.num }}</div>
+            <h3 style="margin: 0; font-size: 21px; font-weight: 800; letter-spacing: -.02em;">{{ r.title }}</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--bb-grey-600);">{{ r.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="position: relative; padding: 104px 56px 112px; background: var(--bb-ink-950);">
+    <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.05) 1.1px, transparent 0); background-size: 24px 24px;"></div>
+    <div style="position: absolute; top: -140px; right: -80px; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, rgba(242,138,0,.22), transparent 68%);"></div>
+
+    <div style="position: relative; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.05fr; gap: 72px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 26px;">
+        <div style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--bb-orange-500);">Klaar om te stralen?</div>
+        <h2 style="margin: 0; font-size: clamp(34px, 3.6vw, 54px); line-height: 1.0; font-weight: 900; letter-spacing: -.03em; color: var(--bb-white); max-width: 18ch;">Klaar voor het volgende event?</h2>
+        <p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--bb-grey-400); max-width: 42ch;">Vertel ons over je piste, je programma en je sponsors. Wij komen terug met een plan, een plaatsingsschema en een prijs.</p>
+        <x-import component-from-global-scope="BrightBoardDesignSystem_8b998d.LEDPanel" color="amber" size="md" label="BrightBoard Jumping" hint-size="100%,120px">READY TO SHINE</x-import>
+        <div style="display: grid; gap: 10px; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--bb-grey-400);">
+          <div>+32 (0)2 486 06 20</div>
+          <div>info@brightboard.eu</div>
+          <div>Zone 5 Mollem 318 · 1730 Asse · BE</div>
+        </div>
+      </div>
+
+      <div style="background: var(--bb-ink-900); border: 1px solid var(--bb-ink-800); border-radius: 24px; padding: 38px 36px 40px;">
+        <form onSubmit="{{ submit }}" style="display: grid; gap: 18px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+            
+            <x-import component-from-global-scope="BrightBoardDesignSystem_8b998d.Input" label="Naam" placeholder="Voor- en achternaam" required="{{ true }}" hint-size="100%,70px"></x-import><x-import component-from-global-scope="BrightBoardDesignSystem_8b998d.Input" label="E-mailadres" type="email" placeholder="naam@club.be" required="{{ true }}" hint-size="100%,70px"></x-import>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+            <x-import component-from-global-scope="BrightBoardDesignSystem_8b998d.Input" label="Organisatie / club" placeholder="Jumping ..." required="{{ true }}" hint-size="100%,70px"></x-import>
+            <sc-if value="{{ showPhoneField }}" hint-placeholder-val="{{ true }}">
+              <x-import component-from-global-scope="BrightBoardDesignSystem_8b998d.Input" label="Telefoon" type="tel" placeholder="Optioneel" hint-size="100%,70px"></x-import>
+            </sc-if>
+          </div>
+          <x-import component-from-global-scope="BrightBoardDesignSystem_8b998d.Textarea" label="Event details" rows="5" placeholder="Locatie, data, aantal bezoekers, gewenste producten, meters boarding..." hint-size="100%,150px"></x-import>
+          <div style="display: flex; align-items: center; gap: 16px; margin-top: 4px;">
+            <x-import component-from-global-scope="BrightBoardDesignSystem_8b998d.Button" variant="primary" size="lg" type="submit" hint-size="180px,48px">{{ submitLabel }}</x-import>
+            <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--bb-grey-500);">Antwoord binnen 2 werkdagen</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding: 48px 56px 56px; background: var(--bb-ink-950); border-top: 1px solid var(--bb-ink-800);">
+    <div style="max-width: 1400px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;">
+      <img src="img/logo-brightboard-light.png" alt="BrightBoard" style="height: 22px; width: auto; display: block;">
+      <div style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--bb-grey-500); display: flex; flex-wrap: wrap; gap: 22px;">
+        <span>© 2026 BrightBoard</span>
+        <span>Officiële LED boarding partner KBVB/RBFA sinds 2008</span>
+        <a href="https://brightboard.eu" target="_blank" rel="noreferrer">brightboard.eu</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showHeroStats&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Secties&quot;},&quot;showEvents&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Secties&quot;},&quot;showPhoneField&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Formulier&quot;}}">
+class Component extends DCLogic {
+  state = { sent: false };
+  scroller = React.createRef();
+
+  scrollBy(dir) {
+    const el = this.scroller.current;
+    if (el) el.scrollLeft += dir * 402;
+  }
+
+  jump(id) {
+    const el = document.getElementById(id);
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 20, behavior: 'smooth' });
+  }
+
+  asset(id, path) {
+    const r = (typeof window !== 'undefined' && window.__resources) || {};
+    return r[id] || path;
+  }
+
+  media(id, path) {
+    return { position: 'absolute', inset: 0, backgroundImage: 'url(' + this.asset(id, path) + ')', backgroundSize: 'cover', backgroundPosition: 'center' };
+  }
+
+  renderVals() {
+    return {
+      ghostBtn: { style: { color: 'var(--bb-white)', borderColor: 'rgba(255,255,255,.45)' } },
+      showHeroStats: this.props.showHeroStats ?? true,
+      showEvents: this.props.showEvents ?? true,
+      showPhoneField: this.props.showPhoneField ?? true,
+      scroller: this.scroller,
+      next: () => this.scrollBy(1),
+      prev: () => this.scrollBy(-1),
+      scrollToContact: () => this.jump('contact'),
+      scrollToProducts: () => this.jump('producten'),
+      submitLabel: this.state.sent ? 'Verzonden ✓' : 'Stuur aanvraag',
+      submit: (e) => {
+        e.preventDefault();
+        this.setState({ sent: true });
+        setTimeout(() => this.setState({ sent: false }), 3000);
+      },
+      products: [
+        { title: 'LED Boarding', eyebrow: 'LED boarding · indoor & outdoor', mediaStyle: this.media('prodBoarding', 'img/prod-boarding.jpg'),
+          body: 'Perimeter boarding rond de piste met live resultaten, sponsorrotatie en scherpe beelden.',
+          items: ['Real-time score-updates', 'Aanpasbare lay-out', 'Weerbestendige behuizing', 'Naadloze integratie'] },
+        { title: 'LED Arch', eyebrow: 'Entrance · decoratief', mediaStyle: this.media('prodArch', 'img/prod-arch.jpg'),
+          body: 'Spectaculaire LED-bogen voor ingang, finishlijn en decoratieve accenten.',
+          items: ['Indrukwekkende visuele impact', 'Modulair ontwerp', 'Volledig programmeerbaar', 'Professionele uitstraling'] },
+        { title: 'LED Video Walls', eyebrow: 'Video · livestream', mediaStyle: this.media('prodVideowall', 'img/prod-videowall.jpg'),
+          body: 'Grote schermen voor videocontent, advertenties en live streaming van de piste.',
+          items: ['Hoge resolutie beelden', 'Perfecte kleurweergave', 'Flexibele configuratie', 'VIP- en sponsorpromotie'] },
+        { title: 'LED Verlichting', eyebrow: 'Arena · training', mediaStyle: this.media('prodLighting', 'img/prod-lighting.jpg'),
+          body: 'Professionele arenaverlichting voor wedstrijdpiste en trainingsgebieden.',
+          items: ['Energiezuinig', 'Dimbaar en programmeerbaar', 'Lange levensduur', 'Optimale zichtcondities'] },
+        { title: 'Aangepaste Software', eyebrow: 'Control · paardensport', mediaStyle: this.media('prodSoftware', 'img/prod-software.jpg'),
+          body: 'Intelligente besturingssoftware, specifiek gebouwd voor de paardensport.',
+          items: ['Automatische scoring', 'Real-time data-analyse', 'Eenvoudig beheer', 'Mobiele toegang'] }
+      ],
+      reasons: [
+        { num: '01', title: 'Betrouwbaarheid', body: 'Bijna 20 jaar ervaring met professionele sportevenementen. Onze systemen werken onder alle omstandigheden.' },
+        { num: '02', title: 'Ondersteuning', body: 'Toegewijde technische begeleiding vóór en tijdens je event. Operator op locatie waar nodig.' },
+        { num: '03', title: 'Flexibiliteit', body: 'Oplossingen op maat van jouw piste en programma. Geen one-size-fits-all.' },
+        { num: '04', title: 'Innovatie', body: 'Geavanceerde technologie die je event naar een volgend niveau brengt. Altijd vooruit.' },
+        { num: '05', title: 'Kosteneffectief', body: 'Duurzame ROI door hogere sponsorinkomsten en een sterkere beleving voor het publiek.' },
+        { num: '06', title: 'Kwaliteit', body: 'Alleen premium materialen en componenten. Professionele installatie en configuratie.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
